@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Routing</title>
+ <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
+ <link rel="stylesheet" type="text/css" href="style.css">
+ <script src="/bower_components/angular/angular.min.js"></script>
+ <script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+ <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+ <script src="main.js"></script>
+</head>
+<body ng-app='routingTest'>
+  <div class="container">
+    <h1>Routing</h1>
+      <button ui-sref="home" class="btn btn-default">home</button>
+      <button ui-sref="list" class="btn btn-default">list</button>
+
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12">
+              <ui-view></ui-view>
+          </div>
+        </div>
+
+
+  </div>
+</body>
+</html>
