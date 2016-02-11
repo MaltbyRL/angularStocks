@@ -1,77 +1,109 @@
-
-
-
-
 <div class="container">
 
-  <form ng-submit="searchStock(symbol)">
-    <input ng-model="symbol" type="text" placeholder="search symbol ''" required>
-    <button class="btn btn-success btn-sm" type="submit">Search</button>
-  </form>
+  <div class="row">
+    <div class="col-xs-7"></div>
+    <div class="col-xs-4">
+      <form ng-submit="searchStock(symbol)">
+        <input ng-model="symbol" type="text" placeholder="search symbol 'AAPL'" required>
+        <button class="btn btn-default btn-sm" type="submit">Search</button>
+      </form>
+    </div>
+    <div class="col-xs-1">
+      <form ng-submit="saveStock(stockInfo)">
+        <button class="btn btn-success btn-sm" type="submit">Save</button>
+      </form>
+    </div>
+  </div>
 
-  <div class="row" ng-if="stock" style="border: 1px solid black;" style="height: 80px;">
-    <div class="col-xs-3"  style="height: 80px; font-weight: bolder; font-size: 20px;">
+  <div class="row" style="border: 1px solid grey; background-color: black;">
+    <div class="col-xs-3" style="height: 80px; font-weight: bolder; font-size: 20px;">
       <div>{{stock.Name}}</div>
     </div>
-     <div class="col-xs-9">
-        <div class="row" style="border: 1px solid black;">
-          <div class="col-xs-5">
-           <div style="font-weight: bolder;">Symbol:</div>
-          </div>
-          <div class="col-xs-7">
-            <div> {{stock.Symbol}}</div>
-          </div>
+    <div class="col-xs-9">
+      <div class="row" style="border: 1px solid grey;">
+        <div class="col-xs-4">
+          <div style="font-weight: bolder;">Symbol:</div>
         </div>
-        <div class="row" style="border: 1px solid black;">
-          <div class="col-xs-5">
-           <div style="font-weight: bolder;">Change:</div>
-          </div>
-          <div class="col-xs-7" style=''>
-            <div> {{stock.Change}}</div>
-          </div>
+        <div class="col-xs-8">
+          <div> {{stock.Symbol}}</div>
         </div>
-        <div class="row" style="border: 1px solid black;">
-          <div class="col-xs-5">
-           <div style="font-weight: bolder;">Change This Year:</div>
-          </div>
-          <div class="col-xs-7" style=''>
-            <div> {{stock.ChangeYTD}}</div>
-          </div>
+      </div>
+      <div class="row" style="border: 1px solid grey;">
+        <div class="col-xs-4">
+          <div style="font-weight: bolder;">Change:</div>
         </div>
-        <div class="row" style="border: 1px solid black;">
-          <div class="col-xs-5">
-           <div style="font-weight: bolder;">As of:</div>
-          </div>
-          <div class="col-xs-7">
-            <div> {{stock.Timestamp}}</div>
-          </div>
+        <div class="col-xs-8" style=''>
+          <div>{{stock.Change}}</div>
+        </div>
+      </div>
+      <div class="row" style="border: 1px solid grey;">
+        <div class="col-xs-4">
+          <div style="font-weight: bolder;">Change This Year:</div>
+        </div>
+        <div class="col-xs-8" style=''>
+          <div> {{stock.ChangeYTD}}</div>
+        </div>
+      </div>
+      <div class="row" style="border: 1px solid grey;">
+        <div class="col-xs-4">
+          <div style="font-weight: bolder;">As of:</div>
+        </div>
+        <div class="col-xs-8">
+          <div> {{stock.Timestamp}}</div>
         </div>
       </div>
     </div>
-  <div class="row" ng-if="stock" style="border: 1px solid black;">
+  </div>
+  <div class="row" style="border: 1px solid grey; background-color: black;">
     <div class="col-xs-6" style="height: 400px; font-size: 30px">
       <div class="row" style="height:100px">
         Updated: {{stock.Timestamp}}
       </div>
       <div class="row" style="height:100px">
-        Opening amount:    ${{stock.Open}}
+        Opening amount: ${{stock.Open}}
       </div>
       <div class="row" style="height:100px">
-        Closing amount:   ${{stock.LastPrice}}
+        Closing amount: ${{stock.LastPrice}}
       </div>
       <div class="row" style="height:100px">
-        YTD Change:  ${{stock.ChangeYTD}}
+        YTD Change: ${{stock.ChangeYTD}}
       </div>
 
     </div>
     <div class="col-xs-6">
-      <div class="row" style="border: 1px solid black;" style="height: 300px;">
-        <div id="curve_chart" style="width: 375px; height: 300px; font-size: 25px; color: red;">search again to see graph</div>
+      <div class="row" style="border: 1px solid grey;" style="height: 300px;">
+        <div id="curve_chart" style="width: 375px; height: 300px; font-size: 25px; color: red;">
+          search stock symbols to see there info
+          <br> GRR / KFRC / FB /
+          <br> NEWS / HOG / AAPL /
+          <br> NFLX / ATVI / POT /
+          <br> FIZZ / MMM / ROCK
+        </div>
       </div>
-      <div class="row" style="border: 1px solid black;" style="height: 200px;">
+      <div class="row" style="border: 1px solid grey;" style="height: 200px;">
         <div style="font-size: 80px; font-align: center;">${{stock.LastPrice}}</div>
       </div>
     </div>
   </div>
 
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th ng-repeat="(key, value) in (savedStocks[0]) track by $index">{{key}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="(key, value) in (savedStocks) track by $index">
+        <td>{{value.Name}}</td>
+        <td>{{value.Symbol}}</td>
+        <td>{{value.Volume}}</td>
+        <td>${{value.price}}</td>
+        <td>
+          <button class="btn btn-danger btn-sm">Del
+            </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>

@@ -1,5 +1,8 @@
 body {
   background-image: url("http://wallpapercave.com/wp/kd9ROmR.jpg");
   color: lightgrey;
-  font-family: Helvetica;
+  font-family: Times;
+}
+#background {
+  background-image: url("http://get-rich-and-retire-early.com/wp-content/uploads/2014/11/Stock-Market-investments.jpg")
 }
