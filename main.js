@@ -85,6 +85,8 @@ app.service('Stock', function($http) {
       console.log('saved:', saved);
       if (this.savedStocks[i].Name !== saved.Name) {
         this.savedStocks.push(saved)
+      }else{
+        alert("Stock alreay added")
       }
     }
     if (this.savedStocks.length === 0) {
